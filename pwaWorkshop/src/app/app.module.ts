@@ -2,19 +2,49 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavigationComponent } from './navigation/navigation.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card'
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AppShellUpdateComponent } from './app-shell-update/app-shell-update.component';
+import { CachedRouteComponent } from './cached-route/cached-route.component';
+import { NonCachedRouteComponent } from './non-cached-route/non-cached-route.component';
+import { PushSubscriptionComponent } from './push-subscription/push-subscription.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CocktailMenuComponent } from './cocktail-menu/cocktail-menu.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    NavigationComponent,
+    DashboardComponent,
+    PushSubscriptionComponent,
+    AppShellUpdateComponent,
+    CachedRouteComponent,
+    NonCachedRouteComponent,
+    CocktailMenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatTabsModule,
+    MatSnackBarModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [NavigationComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/pwaWorkshop/browser",
+    "public": "dist/pwaWorkshop",
     "ignore": [
       "firebase.json",
       "**/.*",

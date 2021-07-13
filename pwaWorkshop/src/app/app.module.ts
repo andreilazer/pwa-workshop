@@ -19,6 +19,11 @@ import { PushSubscriptionComponent } from './push-subscription/push-subscription
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CocktailMenuComponent } from './cocktail-menu/cocktail-menu.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { HttpClientModule } from '@angular/common/http';
+import { CocktailListComponent } from './cocktail-menu/cocktail-list/cocktail-list.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +33,8 @@ import { CocktailMenuComponent } from './cocktail-menu/cocktail-menu.component';
     AppShellUpdateComponent,
     CachedRouteComponent,
     NonCachedRouteComponent,
-    CocktailMenuComponent
+    CocktailMenuComponent,
+    CocktailListComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,10 @@ import { CocktailMenuComponent } from './cocktail-menu/cocktail-menu.component';
     MatListModule,
     MatIconModule,
     MatTabsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressBarModule,
+    HttpClientModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [NavigationComponent]

@@ -1,1 +1,29 @@
-<p>cocktail-menu works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-icon mat-card-avatar>grade</mat-icon>
+    <mat-card-title>Cocktail list</mat-card-title>
+    <mat-card-subtitle>have a drink</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-button color="accent" (click)="getCategories()">
+      <mat-icon>restaurant_menu</mat-icon>Get categories
+    </button>
+  </mat-card-actions>
+  <mat-card-content>
+    <div>
+      <button *ngFor='let category of categories$ | async' mat-button color="accent" (click)="getCocktails(category)">
+        <mat-icon>restaurant_menu</mat-icon> {{category.name}}
+      </button>
+    </div>
+
+    <div *ngIf="cocktails$ | async let cocktails; else loading">
+        <app-cocktail-list [cocktails]="cocktails" [title]="currentSection"></app-cocktail-list>
+    </div>
+
+    <ng-template #loading>
+      <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+    </ng-template>
+
+  </mat-card-content>
+
+</mat-card>

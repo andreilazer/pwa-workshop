@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-header>
+    <h2>{{title}}</h2>
+  </mat-card-header>
+  <mat-card-content class="drinks-container">
+    <mat-card *ngFor="let drink of currentPage" class="drink-card">
+      <mat-card-header>
+        <h3>{{drink.strDrink}}</h3>
+      </mat-card-header>
+      <mat-card-content>
+        <img [src]="drink.strDrinkThumb" class="drink-thumb"/>
+      </mat-card-content>
+    </mat-card>
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-paginator [pageSize]='5' [length]='cocktails.length' (page)="paginate($event)"></mat-paginator>
+  </mat-card-footer>
+</mat-card>

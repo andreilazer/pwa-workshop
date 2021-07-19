@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { NetworkStateService } from '../network-state.service';
 
 @Component({
   selector: 'app-navigation',
@@ -15,6 +16,6 @@ export class NavigationComponent {
       map(result => result.matches)
     );
     
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private breakpointObserver: BreakpointObserver, public networkService: NetworkStateService) { }
   
 }

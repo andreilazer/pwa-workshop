@@ -23,6 +23,9 @@
       </button>
       <span>Angular PWA</span>
       <div class="dot" [ngClass]="(networkService.online$ | async) ? 'green' : 'red'"></div>
+      <div class="actions">
+        <button *ngIf="isInstallVisible" (click)="install()" mat-raised-button class="install-button">Install</button>
+      </div>
     </mat-toolbar>
     
     <router-outlet></router-outlet>

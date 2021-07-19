@@ -44,6 +44,37 @@
           "/assets/material-design-icons/**"
         ]
       }
-    } 
+    },
+    {
+      "name": "photos",
+      "installMode": "lazy",
+      "updateMode": "lazy",
+      "resources": {
+        "urls": [
+          "**/images/media/drink/**"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-performance",
+      "urls": ["/api/json/v1/1/list.php"],
+      "cacheConfig": {
+        "maxSize": 100,
+        "maxAge": "10d",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "api-freshness",
+      "urls": ["api/json/v1/1/filter.php"],
+      "cacheConfig": {
+        "maxSize": 100,
+        "maxAge": "10d",
+        "timeout": "2s",
+        "strategy": "freshness"
+      }
+    }
   ]
 }

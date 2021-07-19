@@ -19,7 +19,6 @@ export class CocktailListComponent implements OnInit {
   }
 
   paginate(page: PageEvent) {
-    console.log(page);
     this.currentPage = this.cocktails.slice((page.pageIndex) * page.pageSize, (page.pageIndex+1) * 5);
   }
 }

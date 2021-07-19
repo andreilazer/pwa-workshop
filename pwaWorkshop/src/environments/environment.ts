@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  config: {
+    "PUSH_API_URL": "http://example.com",
+    "VAPID_PUBLIC_KEY": "YOUR_VAPID_KEY"
+  }
 };
 
 /*

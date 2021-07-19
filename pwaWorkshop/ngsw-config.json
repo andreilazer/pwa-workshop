@@ -22,7 +22,8 @@
       "resources": {
         "files": [
           "/assets/**",
-          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)",
+          "!/assets/material-design-icons/**"
         ]
       }
     },
@@ -34,6 +35,15 @@
           "https://fonts.gstatic.com/**"
         ]
       }
-    }
+    },
+    {
+      "name": "icon-fonts",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/material-design-icons/**"
+        ]
+      }
+    } 
   ]
 }

@@ -79,5 +79,12 @@
   ],
   "appData": {
     "versionMessage": "New version: Update flow is so smooth now!!!"
-  } 
+  },
+  "navigationUrls": [
+    "/**",
+    "!/**/*.*",
+    "!/**/*__*",
+    "!/**/*__*/**",
+    "!/**/non-cached-route"
+  ]  
 }

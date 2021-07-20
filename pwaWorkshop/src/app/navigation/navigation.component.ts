@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { NetworkStateService } from '../network-state.service';
+import { UpdateService } from '../update.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-navigation',
@@ -10,7 +12,6 @@ import { NetworkStateService } from '../network-state.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
-
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
@@ -19,7 +20,12 @@ export class NavigationComponent {
   installPromptEvent: any;
   isInstallVisible = false;
     
-  constructor(private breakpointObserver: BreakpointObserver, public networkService: NetworkStateService) {
+  constructor(private breakpointObserver: BreakpointObserver,
+    public networkService: NetworkStateService,
+    private updateService: UpdateService,
+    private snackBar: MatSnackBar) {
+    
+    this.subscribeToUpdates();
     this.prepareInstallButton();
   }
 
@@ -50,4 +56,27 @@ export class NavigationComponent {
     });
   }
   
+  private subscribeToUpdates() {
+    this.updateService.subscribeToUpdates();
+    this.updateService.available$
+      .pipe(tap(update => console.log('update available', update)))
+      .subscribe(event => {
+        console.log(
+          '[App Shell Update] Update available: current version is',
+          event.current,
+          'available version is',
+          event.available
+        );
+
+        const versionMessage = (event.available?.appData as any)?.versionMessage || '';
+        const snackBarRef = this.snackBar.open(
+          versionMessage || 'Newer version of the app is available.',
+          'Refresh the page'
+        );
+
+        snackBarRef.onAction().subscribe(() => {
+          this.updateService.activateUpdate();
+        });
+      });
+  }
 }

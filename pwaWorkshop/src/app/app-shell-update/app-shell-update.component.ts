@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WindowRef } from '../window-ref';
 import { MatSnackBar } from '@angular/material/snack-bar';
-// Import SwUpdate here
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-shell-update',
@@ -11,25 +11,37 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AppShellUpdateComponent implements OnInit {
   constructor(
     public snackBar: MatSnackBar,
-    private winRef: WindowRef
+    private winRef: WindowRef,
+    private swUpdate: SwUpdate
   ) {}
 
   ngOnInit() {
-    this.subscribeForUpdates();
   }
 
-  subscribeForUpdates() {
-    // Code to subscribe for updates
-  }
 
   activateUpdate() {
     console.log('[App Shell Update] activateUpdate started');
-    // Code to activate the update
+    this.swUpdate
+    .activateUpdate()
+    .then(() => {
+      console.log('[App Shell Update] activateUpdate completed');
+      this.winRef.nativeWindow.location.reload();
+    })
+    .catch(err => {
+      console.error(err);
+    });
   }
 
   checkForUpdate() {
     console.log('[App Shell Update] checkForUpdate started');
-    // Code to explicitly check for the updates
+    this.swUpdate
+      .checkForUpdate()
+      .then(() => {
+        console.log('[App Shell Update] checkForUpdate completed');
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   openLog() {

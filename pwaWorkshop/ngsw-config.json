@@ -76,5 +76,8 @@
         "strategy": "freshness"
       }
     }
-  ]
+  ],
+  "appData": {
+    "versionMessage": "New version: Update flow is so smooth now!!!"
+  } 
 }

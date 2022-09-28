@@ -108,5 +108,7 @@
       }
     }
   },
-  "defaultProject": "pwaWorkshop"
+  "cli": {
+    "analytics": false
+  }
 }

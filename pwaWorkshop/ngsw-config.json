@@ -1,0 +1,71 @@
+{
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/manifest.webmanifest",
+          "/*.css",
+          "/*.js"
+        ]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/*.(svg|cur|jpg|jpeg|png|apng|webp|avif|gif|otf|ttf|woff|woff2)",
+          "!/assets/material-design-icons/**"
+        ]
+      }
+    },
+    {
+      "name": "icon-fonts",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/material-design-icons/**"
+        ]
+      }
+    },
+    {
+      "name": "photos",
+      "installMode": "lazy",
+      "updateMode": "lazy",
+      "resources": {
+        "urls": [
+          "**/images/media/drink/**"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-performance",
+      "urls": ["/api/json/v1/1/list.php"],
+      "cacheConfig": {
+        "maxSize": 100,
+        "maxAge": "10d",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "api-freshness",
+      "urls": ["api/json/v1/1/filter.php"],
+      "cacheConfig": {
+        "maxSize": 100,
+        "maxAge": "10d",
+        "timeout": "1s",
+        "strategy": "freshness"
+      }
+    }
+  ]
+}
